@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.bo.javawebmvc;
 
 /**
@@ -12,6 +10,23 @@ public class Student {
 	private Integer id;
 	private String studentName;
 	private String gender;
+	
+	/**
+	 * @param id
+	 * @param studentName
+	 * @param gender
+	 */
+	public Student(Integer id, String studentName, String gender) {
+		super();
+		this.id = id;
+		this.studentName = studentName;
+		this.gender = gender;
+	}
+
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Integer getId() {
 		return id;
 	}
