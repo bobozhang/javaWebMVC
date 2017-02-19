@@ -74,4 +74,57 @@ public class StudentDao {
 		
 		return students ;
 	}
+	
+	public List<Student> deleteById(Integer id){
+		Connection connection = null;
+		List<Student> students = new ArrayList<Student>();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			String driverClass = "oracle.jdbc.driver.OracleDriver";
+			Class.forName(driverClass);
+
+			String url = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";
+			String user = "dql";
+			String password = "dql";
+			connection = DriverManager.getConnection(url, user, password);
+			
+			String sql = "delete from Student where id = ? ";
+			
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			
+			resultSet = preparedStatement.executeQuery();
+			 
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(resultSet != null){
+				try {
+					resultSet.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(preparedStatement != null){
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(connection != null){
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return students ;
+	}
 }

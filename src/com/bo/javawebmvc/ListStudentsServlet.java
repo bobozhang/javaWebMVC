@@ -33,6 +33,8 @@ public class ListStudentsServlet extends HttpServlet {
 		List<Student> students = studentDao.getAll();
 		request.setAttribute("students",students);
 		request.getRequestDispatcher("/students.jsp").forward(request, response);
+		
+
 	}
 
 }

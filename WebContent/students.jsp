@@ -14,11 +14,12 @@
 	<%
 		List<Student> students = (List<Student>)request.getAttribute("students");
 	%>
-	<table>
+	<table border="1" cellpadding="0" cellspacing="0">
 		<tr>
 			<th> id</th>
 			<th>studentNamt</th>
 			<th>gender</th>
+			<th>Delete</th>
 		</tr>
 		<%
 			for(Student student :students){
@@ -27,6 +28,7 @@
 				<td><%=student.getId() %></td>
 				<td><%= student.getStudentName() %></td>
 				<td><%= student.getGender() %></td>
+				<td><a href="deleteStudent?id=<%=student.getId()%>">Delete</a></td>
 			</tr>
 		<%
 			}
